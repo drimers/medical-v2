@@ -33,7 +33,7 @@ public interface AppointmentRepository extends CrudRepository<AppointmentEntity,
 
     //select  *  from APPOINTMENT as A join Doctor as D on A.doctor_id=D.user_id  where D.first_name like  'Ivan'   or   A.date_time_of_the_appointment like '% :keyword %';
     //select  *  from APPOINTMENT as A join Doctor as D on A.doctor_id=D.user_id  where D.first_name='Ivan'
-    @Query(value = "select  *  from APPOINTMENT as A join Doctor as D on A.doctor_id=D.user_id  where D.first_name like  CONCAT('%', :keyword, '%')  or   A.date_time_of_the_appointment like CONCAT('%', :keyword, '%');", nativeQuery = true)
+    @Query(value = "select  *  from APPOINTMENT as A join Doctor as D on A.doctor_id=D.user_id  where lower(D.first_name) like  lower(CONCAT('%', :keyword, '%'))  or   A.date_time_of_the_appointment like CONCAT('%', :keyword, '%');", nativeQuery = true)
     List<AppointmentEntity> findByKeyword(@Param("keyword") String keyword);
 
 }

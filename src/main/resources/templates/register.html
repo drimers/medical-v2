@@ -23,7 +23,7 @@
     <!-- class named "container" is assigned to div -->
     <div class="container">
         <h1>Register Form</h1>
-        <p>Kindly fill in this form to register.</p>
+
         <label for="firstName"><b>First Name</b></label>
         <input
                 type="text"
@@ -76,11 +76,6 @@
 <!--            th:text="${role}">role </option>-->
 <!--        </select>-->
 
-
-        <label for="comment"><b>Comment</b></label>
-        <textarea class="form-control" id="comment" th:field="*{comment}" rows="3"></textarea>
-
-
         <label for="pwd"><b>Password</b></label>
         <input
                 type="text"
@@ -90,6 +85,11 @@
                 th:field="${credential.password}"
                 required
         />
+
+        <label for="comment"><b>Comment</b></label>
+        <textarea class="form-control" id="comment" th:field="*{comment}" rows="3"></textarea>
+
+
 
 
 
