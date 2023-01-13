@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Result</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css"
+        th:href="@{/css/display_form.css}" />
+</head>
+<body>
+<h2>Result</h2>
+<table>
+  <tbody>
+  <tr>
+    <td><strong>ID:</strong></td>
+    <td><span th:text="${patient.id}"></span></td>
+  </tr>
+  <tr>
+    <td><strong>First Name:</strong></td>
+    <td><span th:text="${patient.firstName}"></span></td>
+
+  </tr>
+  <tr>
+    <td><strong>Last Name:</strong></td>
+    <td><span th:text="${patient.lastName}"></span></td>
+
+  </tr>
+  <tr>
+    <td><strong>Phone:</strong></td>
+    <td><span th:text="${patient.phone}"></span></td>
+
+  </tr>
+  <tr>
+    <td><strong>Email :</strong></td>
+    <td><span th:text="${credential.email}"></span></td>
+
+  </tr>
+ <tr>
+     <td><strong>Role :</strong></td>
+     <td><span th:text="${credential.role}"></span></td>
+
+ </tr>
+ <tr>
+     <td><strong>Comment :</strong></td>
+     <td><span th:text="${patient.comment}"></span></td>
+
+ </tr>
+  <!--
+  <tr>
+    <td><strong>Joining Date:</strong></td>
+    <td><span th:text="${patient.profilePicture}"></span></td>
+
+  </tr>
+  <tr>
+    <td><strong>Retiring Date:</strong></td>
+    <td><span th:text="${patient.appointment}"></span></td>
+
+  </tr>-->
+  <tr>
+    <td colspan="2">&nbsp;<a th:href="@{patient}"
+                             class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add
+      new <p th:text="${credential.role}"></p>
+    </a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

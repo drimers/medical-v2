@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>MEDICAL - Responsive HTML &amp; Bootstrap Template</title>
+    <link href="../java/templates/assets/css/registerForm.css" rel="stylesheet">
+    <![endif]-->
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+
+
+
+
+<form>
+    <!-- class named "container" is assigned to div -->
+    <div class="container">
+        <h1>Register Form</h1>
+        <p>Kindly fill in this form to register.</p>
+        <label for="firstName"><b>First Name</b></label>
+        <input
+                type="text"
+                placeholder="Enter First Name"
+                name="username"
+                id="firstName"
+                required
+        />
+
+        <label for="LastName"><b>Last Name</b></label>
+        <input
+                type="text"
+                placeholder="Enter Last Name"
+                name="LastName"
+                id="LastName"
+                required
+        />
+
+        <label for="email"><b>Email</b></label>
+        <input
+                type="text"
+                placeholder="Enter Email"
+                name="email"
+                id="email"
+                required
+        />
+
+        <label for="phone"><b>Phone</b></label>
+        <input
+                type="text"
+                placeholder="Enter Phone"
+                name="phone"
+                id="phone"
+                required
+        />
+
+        <label for="inputRole"><b>Role</b></label>
+        <select id="inputRole">
+            <option selected>Patient</option>
+            <option>Doctor</option>
+        </select>
+
+        <label for="pwd"><b>Password</b></label>
+        <input
+                type="password"
+                placeholder="Enter Password"
+                name="pwd"
+                id="pwd"
+                required
+        />
+
+        <label for="pwd-repeat"><b>Repeat Password</b></label>
+        <input
+                type="password"
+                placeholder="Repeat Password"
+                name="pwd-repeat"
+                id="pwd-repeat"
+                required
+        />
+
+        <button type="submit">Register</button>
+    </div>
+
+    <div>
+        <p>Already have an account? <a href="patient">Log in</a>.</p>
+    </div>
+</form>
+
+
+
+
+</body>
+</html>
