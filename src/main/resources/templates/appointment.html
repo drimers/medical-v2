@@ -51,7 +51,7 @@
 <!--        </div>-->
 
 
-        <label class="form-label"><b> &nbsp; Doctors Name:</b></label></br>
+        <label class="form-label"><b> &nbsp; Doctor's Name:</b></label></br>
         <select class="col" name="doctorID">
             <option   th:each="doctor : ${doctors}"  th:value="${doctor.id}" th:text="${doctor.firstName} + ' ' + ${doctor.lastName}"></option>
         </select>

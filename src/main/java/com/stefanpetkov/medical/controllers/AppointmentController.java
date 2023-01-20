@@ -50,9 +50,7 @@ public class AppointmentController {
         if (keyword != null) {
             List<AppointmentCommand> list = appointmentService.getByKeyword(keyword);
             model.addAttribute("appointments", list);
-//        } else {
-//            List<AppointmentCommand> list = appointmentRepository.findAppointmentEntitiesByPatient_IdEqualUserIdInDoctorsEntity(2L);
-//            model.addAttribute("appointments", list);
+         model.addAttribute("appointments", list);
        }
         return "patient/patientAppointments";
     }
@@ -78,12 +76,6 @@ public class AppointmentController {
     }
 
 
-//    @RequestMapping(path = "/addAppointment")
-//    public String showAppointmentForm(@ModelAttribute("appointment") AppointmentCommand appointment, Model model) {
-//        log.info("AppointmentController::showAppointmentForm, command = {}", appointment);
-//        model.addAttribute("appointment", appointment);
-//       return "appointment";
-//    }
 
     @RequestMapping(path = "/addAppointment")
     public String showAppointmentForm(@ModelAttribute("appointment") AppointmentCommand appointment, Model model) {
@@ -94,15 +86,7 @@ public class AppointmentController {
         return "appointment";
     }
 
-//    @RequestMapping(path = "/addAppointment")
-//    public String addAppointment(@ModelAttribute("appointment") AppointmentCommand appointment, Model model) {
-//        log.info("AppointmentController::addAppointment, command = {}", appointment);
-//        model.addAttribute("appointment", appointment);
-//        //appointmentService.save(appointment);
-//        // throw new RuntimeException("NOT IMPLEMENTED");
-//        return "appointment";
 
-//    }
 
 
     @RequestMapping(value = "/saveAppointment", method = RequestMethod.POST)
@@ -116,17 +100,7 @@ public class AppointmentController {
         appointmentService.save(appointment);// not ready
         return "redirect:/patient";
     }
-//
-//
-//    @RequestMapping(value = "/saveAppointment", method = RequestMethod.POST)
-//    public String saveAppointment(@ModelAttribute("appointment") Appointment appointment,
-//                                  @ModelAttribute("doctors") Doctor doctor, Model model) {
-//        log.info("AppointmentController :: saveAppointment  appointment = {} ", appointment);
-//        model.addAttribute("doctors", doctor);
-//        model.addAttribute("appointment", appointment);
-//        appointmentRepository.save(appointment);
-//        return "redirect:/patient";
-//    }
+
 
     @GetMapping(path = "updateAppointmentForm")
     public String showUpdateAppointmentForm(Model model, @RequestParam Long appointment_id) {
