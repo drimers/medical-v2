@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-// similar to DTO's ( data transfer objects)
 @Getter
 @Setter
 @RequiredArgsConstructor

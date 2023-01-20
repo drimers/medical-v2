@@ -1,9 +1,9 @@
 package com.stefanpetkov.medical.bootstrap;
 
-import com.stefanpetkov.medical.domain.AppointmentEntity;
-import com.stefanpetkov.medical.domain.CredentialsEntity;
-import com.stefanpetkov.medical.domain.DoctorEntity;
-import com.stefanpetkov.medical.domain.PatientEntity;
+import com.stefanpetkov.medical.domain.Appointment;
+import com.stefanpetkov.medical.domain.UserCredentials;
+import com.stefanpetkov.medical.domain.Doctor;
+import com.stefanpetkov.medical.domain.Patient;
 import com.stefanpetkov.medical.domain.Role;
 import com.stefanpetkov.medical.repositories.AppointmentRepository;
 import com.stefanpetkov.medical.repositories.CredentialsRepository;
@@ -30,32 +30,34 @@ public class BootStrapData implements CommandLineRunner {
 
 
     //Patients
-    PatientEntity patient1 = new PatientEntity();
-    PatientEntity patient2 = new PatientEntity();
-    PatientEntity patient3 = new PatientEntity();
+    Patient patient1 = new Patient();
+    Patient patient2 = new Patient();
+    Patient patient3 = new Patient();
 
 
     //Doctors
-    DoctorEntity doctor = new DoctorEntity();
-    DoctorEntity doctor1 = new DoctorEntity();
-    DoctorEntity doctor2 = new DoctorEntity();
-    DoctorEntity doctor3 = new DoctorEntity();
+    Doctor doctor = new Doctor();
+    Doctor doctor1 = new Doctor();
+    Doctor doctor2 = new Doctor();
+    Doctor doctor3 = new Doctor();
 
     //Credentials
-    CredentialsEntity credentials = new CredentialsEntity();
-    CredentialsEntity credential = new CredentialsEntity();
-    CredentialsEntity credentials1 = new CredentialsEntity();
-    CredentialsEntity credentials2 = new CredentialsEntity();
-    CredentialsEntity credentials3 = new CredentialsEntity();
-    CredentialsEntity credentials4 = new CredentialsEntity();
-    CredentialsEntity credentials5 = new CredentialsEntity();
-    CredentialsEntity credentials6 = new CredentialsEntity();
+    UserCredentials credentials = new UserCredentials();
+    UserCredentials credential = new UserCredentials();
+    UserCredentials credentials1 = new UserCredentials();
+    UserCredentials credentials2 = new UserCredentials();
+    UserCredentials credentials3 = new UserCredentials();
+    UserCredentials credentials4 = new UserCredentials();
+    UserCredentials credentials5 = new UserCredentials();
+    UserCredentials credentials6 = new UserCredentials();
 
     // Appointment
-    AppointmentEntity appointment = new AppointmentEntity();
-    AppointmentEntity appointment1 = new AppointmentEntity();
-    AppointmentEntity appointment2 = new AppointmentEntity();
-    AppointmentEntity appointment3 = new AppointmentEntity();
+    Appointment appointment = new Appointment();
+    Appointment appointment1 = new Appointment();
+    Appointment appointment2 = new Appointment();
+    Appointment appointment3 = new Appointment();
+    Appointment appointment4 = new Appointment();
+    Appointment appointment5 = new Appointment();
 
 
 
@@ -81,7 +83,7 @@ public class BootStrapData implements CommandLineRunner {
         log.info("Bootstrap completed!");
     }
 
-    PatientEntity patient = new PatientEntity();
+    Patient patient = new Patient();
     private void loadData() {
 
         // doctor
@@ -133,7 +135,7 @@ public class BootStrapData implements CommandLineRunner {
 
         // appointment
         LocalDateTime ldt = LocalDateTime.of(2023, 1, 9, 13, 5);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMATTER);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMAT);
         log.info("Formatted date = {}", dtf.toString());
         appointment.setDateTimeOfTheAppointment(ldt);
         appointment.setPatient(patient);
@@ -191,8 +193,8 @@ public class BootStrapData implements CommandLineRunner {
         log.info("Doctor created = {}", doctor2);
   //      doctorRepository.save(doctor2);
 
-        doctor3.setFirstName("Jon");
-        doctor3.setLastName("Dou");
+        doctor3.setFirstName("John");
+        doctor3.setLastName("Doe");
         doctor3.setPhone("08987777777");
         log.info("Doctor created = {}", doctor3);
  //       doctorRepository.save(doctor3);
@@ -268,11 +270,10 @@ public class BootStrapData implements CommandLineRunner {
 
     }
 
-
     public void makeAppointment(){
 
         LocalDateTime ldt1 = LocalDateTime.of(2023, 2, 10, 13, 5);
-        DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMATTER);
+        DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMAT);
         log.info("Formatted date = {}", dtf1.toString());
         appointment1.setDateTimeOfTheAppointment(ldt1);
         appointment1.setPatient(patient);
@@ -285,7 +286,7 @@ public class BootStrapData implements CommandLineRunner {
 
 
         LocalDateTime ldt2 = LocalDateTime.of(2023, 3, 11, 13, 5);
-        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMATTER);
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMAT);
         log.info("Formatted date = {}", dtf2.toString());
         appointment2.setDateTimeOfTheAppointment(ldt2);
         appointment2.setPatient(patient3);
@@ -298,13 +299,33 @@ public class BootStrapData implements CommandLineRunner {
 
 
         LocalDateTime ldt3 = LocalDateTime.of(2024, 12, 11, 13, 5);
-        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMATTER);
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMAT);
         log.info("Formatted date = {}", dtf3.toString());
         appointment3.setDateTimeOfTheAppointment(ldt3);
         appointment3.setPatient(patient3);
         appointment3.setDoctor(doctor);
         log.info("Appointment = {}", appointment3);
         appointmentRepository.save(appointment3);
+
+
+        LocalDateTime ldt4 = LocalDateTime.of(2025, 8, 10, 13, 5);
+        DateTimeFormatter dtf4 = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMAT);
+        log.info("Formatted date = {}", dtf4.toString());
+        appointment4.setDateTimeOfTheAppointment(ldt4);
+        appointment4.setPatient(patient);
+        appointment4.setDoctor(doctor3);
+        log.info("Appointment = {}", appointment4);
+        appointmentRepository.save(appointment4);
+
+
+        LocalDateTime ldt5 = LocalDateTime.of(2024, 3, 10, 13, 5);
+        DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern(ApplicationConstants.DAY_MONTH_YEAR_HOUR_MINUTE_FORMAT);
+        log.info("Formatted date = {}", dtf5.toString());
+        appointment5.setDateTimeOfTheAppointment(ldt5);
+        appointment5.setPatient(patient);
+        appointment5.setDoctor(doctor1);
+        log.info("Appointment = {}", appointment5);
+        appointmentRepository.save(appointment5);
 
         log.info("Appointments");
         log.info("Number of appointments = {}", appointmentRepository.count());

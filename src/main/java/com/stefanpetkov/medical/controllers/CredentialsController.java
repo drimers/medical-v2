@@ -1,71 +1,51 @@
 package com.stefanpetkov.medical.controllers;
 
 
-import com.stefanpetkov.medical.domain.AppointmentEntity;
-import com.stefanpetkov.medical.domain.CredentialsEntity;
-import com.stefanpetkov.medical.domain.DoctorEntity;
-import com.stefanpetkov.medical.repositories.AppointmentRepository;
+import com.stefanpetkov.medical.commands.PatientCommand;
+import com.stefanpetkov.medical.domain.Appointment;
+import com.stefanpetkov.medical.domain.Doctor;
+import com.stefanpetkov.medical.domain.UserCredentials;
 import com.stefanpetkov.medical.repositories.CredentialsRepository;
-import com.stefanpetkov.medical.repositories.DoctorRepository;
 import com.stefanpetkov.medical.services.AppointmentService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
-
+@Slf4j
 @Controller
+@RequiredArgsConstructor
 public class CredentialsController {
 
+
     private final AppointmentService appointmentService;
-    private final DoctorRepository doctorRepository;
-    private final CredentialsRepository credentialsRepository;
-    private final AppointmentRepository appointmentRepository;
-
-    @Autowired
-    public CredentialsController(AppointmentService appointmentService, DoctorRepository doctorRepository, CredentialsRepository credentialsRepository, AppointmentRepository appointmentRepository) {
-        this.appointmentService = appointmentService;
-        this.doctorRepository = doctorRepository;
-        this.credentialsRepository = credentialsRepository;
-        this.appointmentRepository = appointmentRepository;
-    }
-
-
 
     @GetMapping("/login")
     public String showLoginForm(Model model) {
-        CredentialsEntity credentials = new CredentialsEntity();
-        model.addAttribute("credential", credentials);
+        model.addAttribute("credentials", new UserCredentials());
         return "login";
     }
 
+
+    // Form registration
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("patient", new PatientCommand());
+        return "register";
+    }
 
     @RequestMapping(value = "/logon", method = RequestMethod.POST)
-    public String login(@ModelAttribute("credential") CredentialsEntity credentials, @ModelAttribute("doctors") DoctorEntity doctor, @ModelAttribute("appointments") AppointmentEntity appointment, Model model) {
-        System.out.println("get Email:::" + credentials.getEmail());
-
-        model.addAttribute("doctors", appointmentRepository.findAppointmentEntitiesByPatient_IdEqualUserIdInDoctorsEntity(2L));
-
-        CredentialsEntity username = credentialsRepository.findByEmail(credentials.getEmail());
-
-        System.out.println("Email : " + credentials.getEmail());
-        System.out.println("Email Password : " + credentials.getPassword());
-
-        if (username != null) {
-            System.out.println("username : " + username.getEmail());
-            System.out.println("Password : " + username.getPassword());
-
-
-            if ((username.getEmail().equals(credentials.getEmail())) && (username.getPassword().equals(credentials.getPassword()))) {
-                System.out.println("redirect:patient");
-                return "patient/patient";
-            }
-        }
-        System.out.println("Username not valid");
-        return "login";
+    public String login(@ModelAttribute("credential") UserCredentials credentials,
+                        @ModelAttribute("credential") Appointment appointment,
+                        Model model) {
+        model.addAttribute("appointments", appointmentService.appointmentsForPatient(2L) );
+        // TODO: not implemented spring security
+        return "patient/patientAppointments";
     }
-
 
 }
 

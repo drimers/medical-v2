@@ -25,7 +25,7 @@ public final class ApplicationConstants {
 
     //== Date Time Format Patterns ==
 
-    public static final String DAY_MONTH_YEAR_HOUR_MINUTE_FORMATTER = "HH:mm dd-MM-yyyy";
+    public static final String DAY_MONTH_YEAR_HOUR_MINUTE_FORMAT = "dd-MM-yyyy HH:mm";
 
     //== end of Date Time Format Patterns ==
 

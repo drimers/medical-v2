@@ -33,7 +33,7 @@ public abstract class BaseUser implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "credentials_id")
-    protected CredentialsEntity credentials;
+    protected UserCredentials credentials;
 
     public void setId(Long id) {
         this.id = id;

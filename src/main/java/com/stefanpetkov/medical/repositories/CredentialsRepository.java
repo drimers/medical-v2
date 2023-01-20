@@ -1,17 +1,14 @@
 package com.stefanpetkov.medical.repositories;
 
-import com.stefanpetkov.medical.domain.CredentialsEntity;
+import com.stefanpetkov.medical.domain.UserCredentials;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface CredentialsRepository extends CrudRepository<CredentialsEntity, Long> {
+public interface CredentialsRepository extends CrudRepository<UserCredentials, Long> {
 
-
-    CredentialsEntity findByCredentialsId(Long credentialsId);
-
-    CredentialsEntity findByEmail(String email);
-
-    CredentialsEntity findByEmailAndPassword(String email, String Password);
+    Optional<UserCredentials> findByEmail(String email);
 
 }

@@ -14,7 +14,7 @@
   <tbody>
   <tr>
     <td><strong>ID:</strong></td>
-    <td><span th:text="${patient.id}"></span></td>
+    <td><span th:text="${patient.patientId}"></span></td>
   </tr>
   <tr>
     <td><strong>First Name:</strong></td>
@@ -33,14 +33,13 @@
   </tr>
   <tr>
     <td><strong>Email :</strong></td>
-    <td><span th:text="${credential.email}"></span></td>
+    <td><span th:text="${patient.email}"></span></td>
 
   </tr>
- <tr>
-     <td><strong>Role :</strong></td>
-     <td><span th:text="${credential.role}"></span></td>
-
- </tr>
+<!-- <tr>-->
+<!--     <td><strong>Role :</strong></td>-->
+<!--     <td><span th:text="${patient.role}"></span></td>-->
+<!-- </tr>-->
  <tr>
      <td><strong>Comment :</strong></td>
      <td><span th:text="${patient.comment}"></span></td>
@@ -59,8 +58,8 @@
   </tr>-->
   <tr>
     <td colspan="2">&nbsp;<a th:href="@{patient}"
-                             class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add
-      new <p th:text="${credential.role}"></p>
+                             class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Save
+<!--      new <p th:text="${credential.role}"></p>-->
     </a></td>
   </tr>
   </tbody>

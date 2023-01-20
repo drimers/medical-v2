@@ -13,19 +13,24 @@ import java.time.LocalDateTime;
 @ToString
 @RequiredArgsConstructor
 public class AppointmentCommand implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
-
+    //== appointment related fields ==
     private Long appointmentId;
-
-    private Long doctorId;
-
-    private Long patientId;
-
     private LocalDateTime dateTimeOfTheAppointment;
 
-    private String firstName;
+    //== doctor related fields == todo replace with the corresponding commands when available
+    private Long doctorId;
+    private String doctorFirstName;
+    private String doctorLastName;
+    private String doctorPhoneNumber;
 
-    private String lastName;
+    //== patient related fields == todo replace with the corresponding commands when available
+    private Long patientId;
+    private String patientFirstName;
+    private String patientLastName;
+    private String patientPhoneNumber;
+    private String patientComment;
 
 }

@@ -34,7 +34,7 @@ public class WorkingDayEntity implements Serializable {
     private String endTime;
 
     @ManyToOne
-    private DoctorEntity doctor;
+    private Doctor doctor;
 
     @Override
     public boolean equals(Object o) {
